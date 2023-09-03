@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Form</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #67696933;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .container2 {
+            background-color: #6a6d6e;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            color: black;
+        }
+
+        h2 {
+            text-align: center;
+            color:#333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #6a6d6e;
+            border-color: #6a6d6e;
+            font-size: large;
+        }
+
+        .btn-primary:hover {
+            background-color: #484d50;
+            border-color: #484d50;
+        }
+
+        .form-control {
+            border-color: #ccc;
+        }
+
+        .form-control:focus {
+            border-color: black;
+        }
+
+        .text-muted {
+            font-size: 80%;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="container2">
+    <h1 class="mt-5">Contact Us</h1>
+    <h2 class="mb-4">Please fill out the form below:</h2>
+</div>
+<br><br><br>
+    <form id="contactForm">
+        <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName" name="fullName" required>
+        </div>
+        <br><br>
+        <div class="mb-3">
+            <label for="contactNo" class="form-label">Contact No.</label>
+            <input type="tel" class="form-control" id="contactNo" name="contactNo" pattern="[0-9]{10}" required>
+            <br><small class="text-muted">*Please enter a 10-digit phone number.</small>
+        </div>
+        <br><br>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <br><br>
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="address" class="form-control" id="address" name="address" rows="1" cols="35" required>
+        </div>
+        <br><br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<!-- Include Bootstrap JS and jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.2/dist/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    // JavaScript for form validation
+    $(document).ready(function() {
+        $('#contactForm').submit(function(event) {
+            event.preventDefault();
+            // Validation logic here (e.g., check email format, etc.)
+            var fullName = $('#fullName').val();
+            var contactNo = $('#contactNo').val();
+            var email = $('#email').val();
+            var address = $('#address').val();
+
+            // Example: Check if email is valid
+            if (!isValidEmail(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // If all validations pass, you can submit the form here
+            // You can also use AJAX to submit the data to a server
+
+            // For now, let's just display a success message
+            alert('Form submitted successfully!');
+        });
+
+        // Function to validate email format
+        function isValidEmail(email) {
+            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            return emailPattern.test(email);
+        }
+    });
+</script>
+
+</body>
+</html>
+
+
